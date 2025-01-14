@@ -1,41 +1,84 @@
-# Calculadora Móvil
+# Calculadora (Aplicación Móvil)
 
-El diseño de la calculadora está basado en el mismo diseño que tiene la aplicación calculadora del sistema operativo Windows 10 (home).
+Este proyecto consiste en permitir al usuario realizar operaciones básicas, tales como: suma, resta, multiplicación y división, utilizando dos, tres o hasta N números. Asimismo, es posible aplicar operaciones como raíz cuadrada, potencia cuadrada, inversión de signo y recíproco sobre un solo número. La calculadora respeta la jerarquía de operaciones en todas las situaciones.
 
-El funcionamiento de esta aplicación móvil es bastante análogo al mismo, se puede realizar operaciones básicas tales como: suma, resta, multiplicación y división aplicadas sobre dos o más números asimismo es posible aplicar las operaciones: raíz cuadrada, potencia cuadrática, inversor de signo y reciproco sobre un solo número.
+El diseño de esta calculadora está inspirado en la aplicación de calculadora del sistema operativo Windows 10 (Home).
 
-Cada que se presione un número, el programa extraerá la serie de operadores y operandos que se encuentra sobre el textView principal y aplicara la jerarquía de operaciones sobre los mismos para depositar y actualizar el resultado sobre el textView secundario.
+## Tecnologías utilizadas
 
-En cambio cuando se presione un operador básico (suma, resta, multiplicación y división), no se extraerán la serie de operadores y operandos que se encuentra sobre el textView principal.
+- **Java**: Lenguaje de programación principal. En este proyecto se utilizó el `JDK 11`.
+- **Android Studio**: Entorno de desarrollo integrado (IDE) para crear aplicaciones Android.
 
-Funcionamiento de los botones:
+## Funcionamiento
 
-* CE: Actualizara el textView secundario escribiendo un 0. 
-* C: Mandara una cadena vacía sobre el textView principal y actualizara el textView secundario escribiendo un 0.
-* DEL: Eliminara el ultimo carácter escrito sobre el textView principal.
-    * Si el ultimo carácter que queda sobre el textView principal es un número se extraerá la serie de operadores y operandos que se encuentra sobre el textView principal y aplicara la jerarquía de operaciones sobre los mismos para depositar y actualizar el resultado sobre el textView secundario. 
-    * Si el ultimo carácter que queda sobre el textView principal NO es un numero NO se extraerá la serie de operadores y operandos que se encuentra sobre el textView principal y aplicara la jerarquía de operaciones sobre los mismos para depositar y actualizar el resultado sobre el textView secundario. 
-    * Si ya no quedan más caracteres sobre el textView principal, se actualizará el textView secundario escribiendo un 0.
-* Punto: Se extraen todos los caracteres que están sobre el textView principal.
-    * Si lo último que se encuentra es un número.
-        * Si este no tiene un punto, se le agregara uno al final.
-        * Si este tiene un punto, NO se le agregara uno al final.
-    * Si lo último que se encuentra NO es un número, se agregara al final un cero con un punto.
-* Reciproco: Se extraen todos los caracteres que están sobre el textView principal.
-    * Si lo último que se encuentra es un número, se invierte este número (1/numero) y se reescribe todo el textView principal sustituyendo el último número con esta actualización.
-    * Si lo último que se encuentra es un operador, se vuelve a extraer todos los caracteres que están sobre el textView principal y se determina cual es el último número, este número es el que se invierte y se anexa al final del textView principal, respetando el ultimo operador que se encuentra al final del mismo.
-* Raíz cuadrada: Se extraen todos los caracteres que están sobre el textView principal.
-    * Si lo último que se encuentra es un número, se obtiene la raíz cuadra de este número y se reescribe todo el textView principal sustituyendo el último número con esta actualización.
-    * Si lo último que se encuentra es un operador, se vuelve a extraer todos los caracteres que están sobre el textView principal y se determina cual es el último número, este número se obtiene su raíz cuadrada y se anexa al final del textView principal, respetando el ultimo operador que se encuentra al final del mismo.
-* Potencia cuadrática: Se extraen todos los caracteres que están sobre el textView principal.
-    * Si lo último que se encuentra es un número, se obtiene la potencia cuadrada de este número y se reescribe todo el textView principal sustituyendo el último número con esta actualización.
-    * Si lo último que se encuentra es un operador, se vuelve a extraer todos los caracteres que están sobre el textView principal y se determina cual es el último número, este número se obtiene su potencia cuadrada y se anexa al final del textView principal, respetando el ultimo operador que se encuentra al final del mismo.
-* Inversor de signo: Se extraen todos los caracteres que están sobre el textView principal, se determina cual es el último signo escrito y en que posición se encuentra.
-    * Si el ultimo signo es un más, se reescribirá toda la cadena de caracteres cambiando el signo más por un menos.
-    * Si el ultimo signo es un menos, se reescribirá toda la cadena de caracteres cambiando el signo menos por un más.
-* Igual: Actualizara el textView principal con lo que se encuentre en el textView secundario.
-    
-El resto de los botones que se encuentran en la calculadora, no tienen implementado funcionamiento alguno, solo es parte del diseño.
+- **CE**: Actualizara el `TextView` secundario escribiendo un 0.  
+- **C**: Limpia el `TextView` principal y actualiza el secundario escribiendo un 0.  
+- **DEL**: Elimina el último carácter escrito en el `TextView` principal.
+  - Si el último carácter restante es un número, se extraen los operadores y operandos, se aplica la jerarquía de operaciones y se actualiza el resultado en el `TextView` secundario.
+  - Si el último carácter restante **no** es un número, no se extraen los operadores ni operandos.
+  - Si no quedan más caracteres, el `TextView` secundario se actualiza escribiendo un 0.
+- **Punto**: Evalúa los caracteres en el `TextView` principal.
+  - Si lo último es un número:
+    - Si no tiene un punto, se le agrega uno.
+    - Si ya tiene un punto, no se agrega nada.
+  - Si lo último **no** es un número, se agrega un cero seguido de un punto.
+- **Recíproco**: Evalúa los caracteres del `TextView` principal.
+  - Si lo último es un número, se invierte (1/número) y se sustituye el número en el `TextView`.
+  - Si lo último es un operador, se extrae el último número, se invierte y se agrega al final respetando el operador.
+- **Raíz cuadrada**: Evalúa los caracteres del `TextView` principal.
+  - Si lo último es un número, se calcula la raíz cuadrada y se sustituye.
+  - Si lo último es un operador, se extrae el último número, se calcula su raíz cuadrada y se agrega al final respetando el operador.
+- **Potencia cuadrada**: Evalúa los caracteres del `TextView` principal.
+  - Si lo último es un número, se calcula su potencia cuadrada y se sustituye.
+  - Si lo último es un operador, se extrae el último número, se calcula su potencia cuadrada y se agrega al final respetando el operador.
+- **Inversor de signo**: Evalúa el último signo escrito.
+  - Si el último signo es un **más**, se cambia a **menos**.
+  - Si el último signo es un **menos**, se cambia a **más**.
+- **Igual**: Actualiza el `TextView` principal con el contenido del `TextView` secundario.
+
+**Nota**: El resto de los botones presentes en la calculadora que no fueron mencionados no tienen funcionalidad implementada; solo forman parte del diseño.
+
+## Estructura del proyecto
+
+- `java/com/example/calculadora`: Contiene el código fuente de la aplicación en Java.
+- `res/`: Contiene los recursos de la aplicación, organizados en subcarpetas:
+  - `layout/`: Contiene archivos XML que definen la interfaz de usuario.
+- `gradle/`: Contiene los archivos de configuración de Gradle que definen cómo se construye el proyecto.
+
+----
+
+# Calculator (Mobile Application)
+
+This project allows the user to perform basic operations such as addition, subtraction, multiplication, and division using two, three, or up to N numbers. Additionally, it supports operations like square root, square power, sign inversion, and reciprocal on a single number. The calculator respects the order of operations in all cases.
+
+The design of this calculator is inspired by the calculator application of the Windows 10 (Home) operating system.
+
+## Technologies used
+
+- **Java**: Main programming language. This project uses `JDK 11`.
+- **Android Studio**: Integrated development environment (IDE) for building Android applications.
+
+## Functionality
+
+- **CE**: Updates the secondary `TextView` by writing a 0.  
+- **C**: Clears the main `TextView` and updates the secondary one by writing a 0.  
+- **DEL**: Deletes the last character from the main `TextView`.
+  - If the remaining last character is a number, it extracts the operators and operands, applies the order of operations, and updates the result in the secondary `TextView`.
+  - If the remaining last character **is not** a number, it does not extract operators or operands.
+  - If no characters remain, the secondary `TextView` is updated by writing a 0.
+- **Dot**: Evaluates the characters in the main `TextView`.
+  - If the last character is a number:
+    - If it does not have a dot, a dot is added.
+    - If it already has a dot, nothing is added.
+  - If the last character **is not** a number, a zero followed by a dot is added.
+- **Reciprocal**: Evaluates the characters in the main `TextView`.
+  - If the last character is a number, it calculates its reciprocal (1/number) and replaces it.
+  - If the last character is an operator, it extracts the last number, calculates its reciprocal, and appends it, respecting the operator.
+- **Square root**: Evaluates the characters in the main `TextView`.
+  - If the last character is a number, it calculates its square root and replaces it.
+  - If the last character is an operator, it extracts the last number, calculates its square root, and appends it, respecting the operator.
+- **Square power**: Evaluates the characters in the main `TextView`.
+  - If the last character is a 
 
 ![calculadora](https://www.digitaltrends.com/wp-content/uploads/2021/08/calculator2-windows-11.jpg?fit=720%2C555&p=1)
 
