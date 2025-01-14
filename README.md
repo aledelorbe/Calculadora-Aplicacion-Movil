@@ -45,6 +45,9 @@ El diseño de esta calculadora está inspirado en la aplicación de calculadora 
   - `layout/`: Contiene archivos XML que definen la interfaz de usuario.
 - `gradle/`: Contiene los archivos de configuración de Gradle que definen cómo se construye el proyecto.
 
+
+![calculadora](https://www.digitaltrends.com/wp-content/uploads/2021/08/calculator2-windows-11.jpg?fit=720%2C555&p=1)
+
 ----
 
 # Calculator (Mobile Application)
